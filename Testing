@@ -1,0 +1,16 @@
+@SpringBootTest
+public class AppointmentServiceTest {
+  @Autowired AppointmentService service;
+  @Autowired PatientRepo pRepo;
+  @Autowired DoctorRepo dRepo;
+
+  @Test
+  public void testBooking() {
+    Patient p = pRepo.save(new Patient(...));
+    Doctor d = dRepo.save(new Doctor(...));
+    LocalDateTime slot = LocalDateTime.now().plusDays(1);
+    service.book(p.getId(), d.getId(), slot);
+    List<Appointment> list = service.findByPatient(p.getId());
+    assertThat(list).isNotEmpty();
+  }
+}
