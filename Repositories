@@ -1,0 +1,8 @@
+public interface PatientRepo extends JpaRepository<Patient,Long>{}
+public interface DoctorRepo extends JpaRepository<Doctor,Long>{}
+public interface AppointmentRepo extends JpaRepository<Appointment,Long>{
+ List<Appointment> findByDoctorAndSlot(Doctor d, LocalDateTime slot);
+}
+public interface MedicationRepo extends JpaRepository<Medication,Long>{
+ List<Medication> findByPatient(Patient p);
+}
