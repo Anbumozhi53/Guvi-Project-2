@@ -1,0 +1,6 @@
+@Service
+public class AppointmentService {
+  @Autowired AppointmentRepo apptRepo;
+  public List<LocalDateTime> viewSlots(Long doctorId) { ... }
+  public void book(Long pid, Long did, LocalDateTime slot) { ... }
+}
